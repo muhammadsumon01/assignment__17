@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap Link  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome Link  -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+    <!-- CSS Link  -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&family=Quicksand:wght@400;500;600&display=swap');
+
+        .product__image {
+            max-width: 200px;
+            margin: auto;
+            height: 200px;
+        }
+
+        .product__image img {
+            max-width: 100%;
+            height: 100%;
+            margin: auto;
+            display: block;
+        }
+
+        .product__category {
+            color: #8a8787;
+            font-size: 12px;
+            text-transform: capitalize;
+        }
+
+        .product__title {
+            color: #253D4E;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            line-height: inherit;
+            text-transform: capitalize;
+        }
+
+        .product__vendor.text-muted {
+            font-size: 13px;
+        }
+
+        .product__vendor.text-muted span {
+            font-size: 14px;
+            color: #008000cc;
+            text-transform: capitalize;
+        }
+
+        .product__price {
+            display: inline-block;
+        }
+
+        .add__toCart {
+            margin-left: 15px;
+            position: relative;
+            display: inline-block;
+            padding: 6px 20px 6px 20px;
+            border-radius: 4px;
+            background-color: #DEF9EC;
+            font-size: 14px;
+            color: #000000ab;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+
+        .product__price span {
+            font-size: 16px;
+            font-weight: bold;
+            color: #3BB77E;
+            margin-right: 5px;
+        }
+
+        .add__toCart .fas.fa-shopping-cart {
+            margin-right: 5px;
+        }
+
+        .product__item {
+            max-width: 300px;
+            font-family: "Quicksand", sans-serif;
+        }
+
+        .sale__regular span:nth-child(1) {
+            font-size: 10px;
+        }
+
+        .sale__regular.text-decoration-line-through {
+            font-size: 11px;
+        }
+
+        .add__toCart:hover {
+            background-color: #3BB77E;
+            color: #fff;
+            -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+            -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .product__item {
+            margin: 15px;
+        }
+
+        .product__item__container {
+            margin: 15px;
+        }
+
+        .product__item button {
+            padding: 0;
+            border: none;
+            border-radius: unset;
+            margin-left: 25px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+        }
+
+        .product__item button>i {
+            font-size: 10px;
+            vertical-align: middle;
+            margin-left: 10px;
+            padding: 10px;
+            transition: 0.3s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .product__item button>i:hover {
+            background: #151515d6;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div style="max-width: 1200px;margin: auto;height: 100%;height: 100vh;position: relative;" class="product">
+        <div class="row">
+            <div class="col-md-4">
+                <form class="position-sticky devAddForm" action="javascript:productAdd();"
+                    style="top:10px;margin:30px;">
+                    <div class="form-control w-auto h-auto">
+                        <input required class="w-100 p-2 my-2" name="productName" placeholder="Product Name"
+                            type="text">
+                        <input required name="productCategory" class="w-100 p-2 my-2" placeholder="Product Category"
+                            type="text">
+                        <input required name="productImg" class="w-100 p-2 my-2" placeholder="Product Image Link"
+                            type="text">
+                        <input name="productVendor" required class="w-100 p-2 my-2" placeholder="Product Vendor"
+                            type="text">
+                        <input required class="w-100 p-2 my-2" name="prouctSalePrice" placeholder="Product Sale Price"
+                            type="number">
+                        <input required name="prouctRegPrice" class="w-100  p-2 my-2"
+                            placeholder="Product Regular Price" type="number">
+                        <input class="w-100 p-2 my-2 btn btn-success" value="Add Product" type="submit">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-8">
+                <div class="product__item__container d-flex justify-content-center flex-wrap">
+
+                </div>
+            </div>
+        </div>
+        <div id="bs-modal" class="product-modal-content row position-absolute bg-light border rounded p-3">
+            <i style="width: fit-content;padding: 10px 15px;font-weight: 200;font-size: 15px;position: absolute;right: 20px;height: fit-content;cursor: pointer;z-index: 1;"
+                class="border rounded fas fa-times modal-close-btn"></i>
+            <div class="product__info" style="display: inherit">
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script src="assets/js/function.js"></script>
+    <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

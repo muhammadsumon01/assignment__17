@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap Link  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome Link  -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+    <!-- Material Icon Link  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- CSS Link  -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboardTab.css">
+
+</head>
+
+<body>
+
+    <div class="deblocker border d-flex mt-4">
+        <div class="deblocker__sidebar border-right">
+            <div class="sidebar__head">
+                <a class="head__logo db-list-item">
+                    <img src="https://piximods.com/wp-content/plugins/deblocker/images/logo-color.svg" alt="log">
+                    <h6 class="plguin__name font-weight-bold">DeBlocker <sup class="version font-weight-normal">v.
+                            3.1.3</sup></h6>
+                </a>
+                <button class="head__saveChangesBtn btn btn-primary font-weight-bold db-mx-10">Save Changes</button>
+                <hr>
+            </div>
+            <div class="sidebar__main ms-tab-container">
+                <p class="section-name db-sub-header db-mx-10"> Plugin Setting</p>
+                <a href="#general"
+                    class="section-button-item db-list-item db-my-5 btn shadow-none ms-tab ms-tab--activated">
+                    <i class="material-icons db-list-item__graphic" aria-hidden="true">tune</i>
+                    General
+                </a>
+                <a href="#behaviour" class="section-button-item db-list-item db-my-5 btn shadow-none ms-tab">
+                    <i class="material-icons db-list-item__graphic" aria-hidden="true">track_changes</i> Behaviour
+                </a>
+                <a href="#customCSS" class="section-button-item db-list-item db-my-5 btn shadow-none ms-tab">
+                    <i class="material-icons db-list-item__graphic" aria-hidden="true">code</i> Custom CSS
+                </a>
+                <a href="#assignments" class="section-button-item db-list-item db-my-5 btn shadow-none ms-tab">
+                    <i class="material-icons db-list-item__graphic" aria-hidden="true">flag</i> Assignments
+                </a>
+                <a href="#activation" class="section-button-item db-list-item db-my-5 btn shadow-none ms-tab">
+                    <i class="material-icons db-list-item__graphic" aria-hidden="true">vpn_key</i> Activation
+                </a>
+                <hr class="sidebar__hr">
+                <p class="section-name db-sub-header db-mx-10"> Helpful Links</p>
+                <a href="#" class="section-button-item db-list-item db-my-5 btn shadow-none">
+                    <i class="material-icons db-list-item__graphic" aria-hidden="true">collections_bookmark</i>
+                    Documentation
+                </a>
+                <a href="#" class="section-button-item db-list-item db-my-5 btn shadow-none">
+                    <i class="material-icons db-list-item__graphic" aria-hidden="true">store</i>
+                    More plugins
+                </a>
+            </div>
+        </div>
+        <div class="deblocker__main p-4 ms-tab-content-container">
+            <div id="general" class="ms-tab-content">
+                <b>General</b> - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt deleniti aliquid
+                accusamus atque ratione neque non tempore placeat cumque consequatur.
+            </div>
+            <div id="behaviour" class="ms-tab-content">
+                <b>Behaviour</b> - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt deleniti aliquid
+                accusamus atque ratione neque non tempore placeat cumque consequatur.
+            </div>
+            <div id="customCSS" class="ms-tab-content">
+                <b>Custom CSS</b> - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt deleniti aliquid
+                accusamus atque ratione neque non tempore placeat cumque consequatur.
+            </div>
+            <div id="assignments" class="ms-tab-content">
+                <b>Assignments</b> - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt deleniti aliquid
+                accusamus atque ratione neque non tempore placeat cumque consequatur.
+            </div>
+            <div id="activation" class="ms-tab-content">
+                <b>Activation</b> - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt deleniti aliquid
+                accusamus atque ratione neque non tempore placeat cumque consequatur.
+            </div>
+        </div>
+    </div>
+    <!-- JS Link  -->
+    <script src="assets/js/function.js"></script>
+    <script>
+        // Tab Sidebar
+
+        let sidebarTabs = document.querySelectorAll(".ms-tab-container .ms-tab");
+        let sidebarContentItems = document.querySelectorAll(".ms-tab-content-container .ms-tab-content");
+
+        sidebarTabs.forEach(sideBarTab => {
+            sideBarTab.addEventListener("click", function (e) {
+                e.preventDefault();
+                sidebarContentItems.forEach(sidebarContentItem => {
+                    sidebarContentItem != document.querySelector(this.getAttribute("href")) ?
+                        sidebarContentItem.classList.remove("ms-tab-content--activated") :
+                        sidebarContentItem.classList.add("ms-tab-content--activated");
+                })
+            })
+        })
+
+        document.querySelectorAll(".ms-tab").forEach(dbItem => {
+            dbItem.addEventListener("click", function () {
+                document.querySelectorAll(".ms-tab").forEach(dbItem => {
+                    (dbItem != this) ? dbItem.classList.remove("ms-tab--activated"): dbItem
+                        .classList.add("ms-tab--activated");
+                })
+
+            })
+        })
+
+        // Show Current activated Sidebar Tab content on load
+
+        sidebarTabs.forEach(sidebarTab => {
+            sidebarTab.classList.contains("ms-tab--activated") ? document.querySelector(sidebarTab.getAttribute(
+                "href")).classList.add("ms-tab-content--activated") : null;
+        })
+    </script>
+
+</body>
+
+</html>

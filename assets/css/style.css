@@ -1,0 +1,44 @@
+.promotion {
+    background: #FDE0E9;
+    padding: 5px 15px;
+    width: fit-content;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #4F7715;
+}
+
+.product-modal-content {
+    visibility: hidden;
+    width: 800px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+.product-modal-content.active {
+    top: 50%;
+    visibility: visible;
+    z-index: 100;
+    transition: top 0.3 ease-in-out;
+    -webkit-transition: top 0.3 ease-in-out;
+    -moz-transition: top 0.3 ease-in-out;
+    -ms-transition: top 0.3 ease-in-out;
+    -o-transition: top 0.3 ease-in-out;
+}
+
+.modal-close-btn {
+    transition: background 0.3s;
+    -webkit-transition: background 0.3s;
+    -moz-transition: background 0.3s;
+    -ms-transition: background 0.3s;
+    -o-transition: background 0.3s;
+}
+
+.modal-close-btn:hover {
+    background: #000000bd;
+    color: white;
+}

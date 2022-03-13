@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap Link  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome Link  -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+    <!-- CSS Link  -->
+    <style>
+        /* Bootstrap Tab */
+        .bootstrap__tab {
+            max-width: 600px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+        }
+
+        .bootstrap__tab .tab__container a.tab {
+            border-bottom-left-radius: 0px !important;
+            border-bottom-right-radius: 0px !important;
+            background: white;
+        }
+
+        .bootstrap__tab .tab__container a.tab:hover {
+            border: 1px solid rgba(0, 0, 0, 0.479);
+            border-bottom: 0px solid transparent;
+        }
+
+        .bootstrap__tab .tab__container a.tab.active {
+            border: 1px solid rgba(0, 0, 0, 0.479);
+            border-bottom: 0px solid transparent;
+            margin-bottom: -1px;
+        }
+
+        .bootstrap__tab .tab__container a.tab:focus {
+            box-shadow: none;
+        }
+
+        .bootstrap__tab .tab__content {
+            border-top: 1px solid rgba(0, 0, 0, 0.39);
+            padding: 5px 0px;
+        }
+
+        .bootstrap__tab .tab__content div,
+        .bootstrap__tab .tab__content div:last-child {
+            visibility: hidden;
+            max-height: 0;
+            padding: 0;
+            margin: 0;
+            transition: color 0.6s ease-in-out;
+            -webkit-transition: color 0.6s ease-in-out;
+            -moz-transition: color 0.6s ease-in-out;
+            -ms-transition: color 0.6s ease-in-out;
+            -o-transition: color 0.6s ease-in-out;
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .bootstrap__tab .tab__content div.show {
+            visibility: visible;
+            max-height: 100%;
+            padding: 10px 0;
+            margin: 0;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="bootstrap__tab container my-5 border p-2">
+        <div class="tab__container pt-2 d-flex">
+            <a href="#tab-home" class="btn tab active">Home</a>
+            <a href="#tab-profile" class="btn tab">Profile</a>
+            <a href="#tab-contact" class="btn tab">Contact</a>
+            <a href="#tab-about" class="btn tab">About Us</a>
+        </div>
+        <div class="tab__content">
+            <div id="tab-home">
+                <b>Home</b> - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia similique odio ex unde,
+                optio
+                quibusdam maiores quia, quos cupiditate nisi quidem obcaecati voluptates, at eum? Accusantium
+                voluptatibus libero delectus officia.
+            </div>
+            <div id="tab-profile">
+                <b>Profile</b> - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia similique odio ex
+                unde,
+                optio
+                quibusdam maiores quia, quos cupiditate nisi quidem obcaecati voluptates, at eum? Accusantium
+                voluptatibus libero delectus officia.
+            </div>
+            <div id="tab-contact">
+                <b>Contact</b> - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia similique odio ex
+                unde,
+                optio
+                quibusdam maiores quia, quos cupiditate nisi quidem obcaecati voluptates, at eum? Accusantium
+                voluptatibus libero delectus officia.
+            </div>
+            <div id="tab-about">
+                <b>About</b> - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia similique odio ex unde,
+                optio
+                quibusdam maiores quia, quos cupiditate nisi quidem obcaecati voluptates, at eum? Accusantium
+                voluptatibus libero delectus officia.
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JS Link  -->
+    <script src="assets/js/function.js"></script>
+    <script>
+        // Bootstrap Tab
+        let tabs = document.querySelectorAll(".bootstrap__tab .tab__container a.tab");
+        let tabContentItems = document.querySelectorAll(".bootstrap__tab .tab__content div");
+
+        tabs.forEach(tabItem => {
+            tabItem.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                tabs.forEach(tabItem => tabItem != this ? tabItem.classList.remove("active") : this
+                    .classList.add("active"));
+
+                tabContentItems.forEach(tabContentItem => tabContentItem != document.querySelector(this
+                        .getAttribute("href")) ? tabContentItem.classList.remove("show") : document
+                    .querySelector(this.getAttribute("href")).classList.add("show"))
+
+            })
+        })
+
+        // Show Active Bootstrap Tab Content on load
+        tabs.forEach(tab => {
+            tab.classList.contains("active") ? document.querySelector(tab.getAttribute("href")).classList.add(
+                "show") : null;
+        })
+    </script>
+
+</body>
+
+</html>
